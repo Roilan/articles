@@ -17,6 +17,9 @@ export default class Table extends Component {
 
           <tbody>
            <ArticleRow />
+           <ArticleRow />
+           <ArticleRow />
+           <ArticleRow />
           </tbody>
         </table>
       </div>

@@ -1,5 +1,9 @@
 @import './Colors';
 
+body {
+  font-family: 'lato';
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -13,12 +17,60 @@ th {
   border-bottom: 3px solid $borderLightRed;
   color: white;
   font-weight: 300;
-  font-family: 'lato';
   font-size: 0.9em;
   padding: 15px 30px 15px 5px;
   text-align: left;
 
   &:nth-child(4) {
     border-right: 1px solid $borderDarkRed;
+  }
+}
+
+.articleRow {
+  border-left: 1px solid darken($darkGray, 2%);
+  border-right: 1px solid darken($darkGray, 2%);
+
+  &:nth-child(odd) {
+    background: $gray;
+  }
+
+  &:nth-child(even) {
+    background: darken($gray, 5%);
+    border-top: 1px solid darken($darkGray, 2%);
+    border-bottom: 1px solid darken($darkGray, 2%);
+  }
+
+  .articleRow-title-img,
+  .articleRow-title-text {
+    display: inline-block;
+  }
+
+  .articleRow-author,
+  .articleRow-words,
+  .articleRow-submitted {
+    padding: 0px 5px;
+    text-align: center;
+  }
+
+  .articleRow-title-img {
+    height: 50px;
+    margin: 10px 0px 10px 10px;
+    width: 50px;
+  }
+  .articleRow-title-text {
+    color: $darkBlue;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 12px;
+    vertical-align: top;
+  }
+
+  .articleRow-author {
+    border-left: 1px solid darken($darkGray, 2%);
+    border-right: 1px solid darken($darkGray, 2%);
+  }
+
+  .articleRow-words {
+    border-right: 1px solid darken($darkGray, 2%);
   }
 }

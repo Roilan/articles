@@ -15,6 +15,20 @@ class Table extends Component {
   }
 
   renderArticleRows() {
+    const { articles } = this.props;
+    return articles.map(article => {
+      return (
+        <ArticleRow
+          key={article.id}
+          image={article.image}
+          title={article.title}
+          url={article.url}
+          submitted={article.publish_at}
+          profile={article.profile}
+          words={article.words}
+        />
+      )
+    });
   }
 
   render() {

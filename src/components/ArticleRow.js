@@ -1,17 +1,29 @@
 import React, { Component } from 'react';
+import Moment from 'moment';
 
 export default class ArticleRow extends Component {
   render() {
+    const { key, image, title, url, submitted, profile, words } = this.props;
+
     return (
-      <tr className="articleRow">
+      <tr className="articleRow" key={key}>
         <td className="articleRow-title">
-          <img className="articleRow-title-img" src="http://thumbs.policymic.com/jbftphJJ9iicv1UtzATuAJSu3Sw=/0x96:2988x1980/500x315/s3.amazonaws.com/policymic-images/a72af79065b61349b1e3f8475d1f9db30f576e34bee3bb75c30177f665cf9019.jpg" alt=""/>
-          <span className="articleRow-title-text">Immigration Reform 2013: Democrats have the edge</span>
+          <img className="articleRow-title-img" src={image}/>
+          <a href={url} className="articleRow-title-text">{title}</a>
         </td>
-        <td className="articleRow-author">Medha Chandorkar</td>
-        <td className="articleRow-words">433</td>
-        <td className="articleRow-submitted">6 minutes ago</td>
+        <td className="articleRow-author">{profile.first_name} {profile.last_name}</td>
+        <td className="articleRow-words">{words}</td>
+        <td className="articleRow-submitted">{Moment(submitted).fromNow()}</td>
       </tr>
     )
   }
 }
+
+ArticleRow.propTypes = {
+  image: React.PropTypes.string.isRequired,
+  title: React.PropTypes.string.isRequired,
+  url: React.PropTypes.string.isRequired,
+  submitted: React.PropTypes.string.isRequired,
+  profile: React.PropTypes.object.isRequired,
+  words: React.PropTypes.number.isRequired
+};

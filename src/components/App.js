@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import Table from './Table';
 
+import '../scss/App.scss';
+
 export default class App extends Component {
   render() {
     return (
       <div>
-        <h1></h1>
+        <Table />
       </div>
     );
   }

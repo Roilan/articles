@@ -15,11 +15,17 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ],
   module: {
-    loaders: [{
-      exclude: /node_modules/,
-      loaders: ['react-hot', 'babel'],
-      include: __dirname + '/src'
-    }]
+    loaders: [
+      {
+        exclude: /node_modules/,
+        loaders: ['react-hot', 'babel'],
+        include: __dirname + '/src'
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass']
+      }
+    ]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']

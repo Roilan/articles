@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Table from './Table';
+import Table from './../containers/Table';
 
 import '../scss/App.scss';
 

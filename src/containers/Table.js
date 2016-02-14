@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ArticleRow from '../components/ArticleRow';
 
 export default class Table extends Component {
   render() {
@@ -12,12 +13,7 @@ export default class Table extends Component {
             <th>Words</th>
             <th>Submitted</th>
           </tr>
-          <tr>
-            <td>Immigration Reform 2013: Democrats have the edge</td>
-            <td>Medha Chandorkar</td>
-            <td>433</td>
-            <td>6 minutes ago</td>
-          </tr>
+          <ArticleRow />
           </tbody>
         </table>
       </div>

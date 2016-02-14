@@ -6,14 +6,17 @@ export default class Table extends Component {
     return (
       <div>
         <table>
+          <thead>
+            <tr>
+              <th>Unpublished Articles</th>
+              <th>Author</th>
+              <th>Words</th>
+              <th>Submitted</th>
+            </tr>
+          </thead>
+
           <tbody>
-          <tr>
-            <th>Unpublished Articles</th>
-            <th>Author</th>
-            <th>Words</th>
-            <th>Submitted</th>
-          </tr>
-          <ArticleRow />
+           <ArticleRow />
           </tbody>
         </table>
       </div>

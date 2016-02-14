@@ -3,16 +3,22 @@
 table {
   border-collapse: collapse;
   width: 100%;
+}
 
-  th {
-  	background: $red;
-		background: linear-gradient($red, $darkRed);
-		border-bottom: 3px solid $borderRed;
-		color: white;
-		font-weight: 300;
-		font-family: 'lato';
-		font-size: 0.9em;
-		padding: 15px 30px 15px 5px;
-		text-align: left;
+th {
+  background: $red;
+  background: linear-gradient($red, $darkRed);
+  border-top: 1px solid $borderDarkRed;
+  border-left: 1px solid $borderDarkRed;
+  border-bottom: 3px solid $borderLightRed;
+  color: white;
+  font-weight: 300;
+  font-family: 'lato';
+  font-size: 0.9em;
+  padding: 15px 30px 15px 5px;
+  text-align: left;
+
+  &:nth-child(4) {
+    border-right: 1px solid $borderDarkRed;
   }
 }

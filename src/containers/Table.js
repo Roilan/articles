@@ -34,10 +34,7 @@ class Table extends Component {
 
   loadMoreArticles() {
     const { loadMoreArticles, allArticles, visibleArticles, getMoreArticles } = this.props;
-    if (visibleArticles.length === 60) {
-      // do something because we reached max
-    }
-    else if (visibleArticles.length !== 0 && allArticles.length === visibleArticles.length) {
+    if (visibleArticles.length !== 0 && allArticles.length === visibleArticles.length) {
       getMoreArticles();
     } else {
       loadMoreArticles();
@@ -45,6 +42,13 @@ class Table extends Component {
   }
 
   render() {
+    const { allArticles, visibleArticles } = this.props;
+    const renderLoadMore = allArticles.length > 30 && allArticles.length === visibleArticles.length ? (
+      <button className="articleLoadMore articleLoadMore-disabled" onClick={this.loadMoreArticles} disabled>Load More Articles</button>
+    ): (
+      <button className="articleLoadMore" onClick={this.loadMoreArticles}>Load More Articles</button>
+    );
+
     return (
       <div>
         <table>
@@ -61,7 +65,7 @@ class Table extends Component {
             {this.renderArticleRows()}
           </tbody>
         </table>
-        <button onClick={this.loadMoreArticles}>Load More Articles</button>
+        {renderLoadMore}
       </div>
     )
   }

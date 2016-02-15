@@ -8,11 +8,11 @@ const INITIAL_STATE = {
 export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
     case GET_INITIAL_ARTICLES:
-      return {
+      return Object.assign({}, state, {
+        ...state,
         allArticles: action.payload.data,
         visibleArticles: action.payload.data.slice(0, 10)
-      }
-
+      })
     case GET_MORE_ARTICLES:
       return Object.assign({}, state, {
         ...state,
@@ -25,6 +25,7 @@ export default function(state = INITIAL_STATE, action) {
       }
 
       return Object.assign({}, state, {
+        ...state,
         visibleArticles: [
           ...state.visibleArticles,
           ...state.allArticles.slice(state.visibleArticles.length, state.visibleArticles.length + 10)

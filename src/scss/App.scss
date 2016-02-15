@@ -85,6 +85,24 @@ th {
   }
 }
 
+.articleLoadMore {
+  background: $borderLightRed;
+  background: linear-gradient($red, $darkRed);
+  border: 0;
+  color: white;
+  font-size: 1.2em;
+  padding: 30px;
+  width: 100%;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:disabled {
+    opacity: 0.8;
+  }
+}
+
 @media (max-width: 804px) {
   .articleRow {
     .articleRow-title-img {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ArticleRow from '../components/ArticleRow';
-import { getArticles } from '../actions/index';
+import { getArticles, loadMoreArticles } from '../actions/index';
 
 class Table extends Component {
   constructor() {
@@ -15,8 +15,8 @@ class Table extends Component {
   }
 
   renderArticleRows() {
-    const { articles } = this.props;
-    return articles.map(article => {
+    const { visibleArticles } = this.props;
+    return visibleArticles.map(article => {
       return (
         <ArticleRow
           key={article.id}
@@ -48,15 +48,14 @@ class Table extends Component {
             {this.renderArticleRows()}
           </tbody>
         </table>
+        <button onClick={this.props.loadMoreArticles}>Load More Articles</button>
       </div>
     )
   }
 }
 
 function mapStateToProps(state) {
-  return {
-    articles: state.articles
-  }
+  return { ...state.data }
 }
 
-export default connect(mapStateToProps, { getArticles })(Table)
+export default connect(mapStateToProps, { getArticles, loadMoreArticles })(Table)

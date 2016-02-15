@@ -12,6 +12,13 @@ export default function(state = INITIAL_STATE, action) {
         allArticles: action.payload.data,
         visibleArticles: action.payload.data.slice(0, 10)
       }
+
+    case GET_MORE_ARTICLES:
+      return Object.assign({}, state, {
+        ...state,
+        allArticles: [...state.allArticles, ...action.payload.data],
+        visibleArticles: [...state.visibleArticles, ...action.payload.data.slice(0, 10)]
+      });
     case LOAD_MORE_ARTICLES:
       if (state.allArticles.length === state.visibleArticles.length) {
         return state;

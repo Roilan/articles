@@ -21,3 +21,12 @@ export function loadMoreArticles() {
     type: LOAD_MORE_ARTICLES
   }
 }
+
+export function getMoreArticles() {
+  const request = axios.get(MORE_ARTICLES);
+
+  return {
+    type: GET_MORE_ARTICLES,
+    payload: request
+  }
+}

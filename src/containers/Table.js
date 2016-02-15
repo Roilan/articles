@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ArticleRow from '../components/ArticleRow';
-import { getArticles, loadMoreArticles } from '../actions/index';
+import { getArticles, loadMoreArticles, getMoreArticles } from '../actions/index';
 
 class Table extends Component {
   constructor() {
     super();
 
     this.renderArticleRows = this.renderArticleRows.bind(this);
+    this.loadMoreArticles = this.loadMoreArticles.bind(this);
   }
 
   componentWillMount() {
@@ -31,6 +32,18 @@ class Table extends Component {
     });
   }
 
+  loadMoreArticles() {
+    const { loadMoreArticles, allArticles, visibleArticles, getMoreArticles } = this.props;
+    if (visibleArticles.length === 60) {
+      // do something because we reached max
+    }
+    else if (visibleArticles.length !== 0 && allArticles.length === visibleArticles.length) {
+      getMoreArticles();
+    } else {
+      loadMoreArticles();
+    }
+  }
+
   render() {
     return (
       <div>
@@ -48,7 +61,7 @@ class Table extends Component {
             {this.renderArticleRows()}
           </tbody>
         </table>
-        <button onClick={this.props.loadMoreArticles}>Load More Articles</button>
+        <button onClick={this.loadMoreArticles}>Load More Articles</button>
       </div>
     )
   }
@@ -58,4 +71,4 @@ function mapStateToProps(state) {
   return { ...state.data }
 }
 
-export default connect(mapStateToProps, { getArticles, loadMoreArticles })(Table)
+export default connect(mapStateToProps, { getArticles, loadMoreArticles, getMoreArticles })(Table)

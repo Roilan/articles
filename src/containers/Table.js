@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ArticleRow from '../components/ArticleRow';
-import { getArticles, loadMoreArticles, getMoreArticles } from '../actions/index';
+import { getArticles, loadMoreArticles, getMoreArticles, sortArticles, SORT_BY_WORDS, SORT_BY_SUBMITTED } from '../actions/index';
 
 class Table extends Component {
   constructor() {
@@ -16,8 +16,10 @@ class Table extends Component {
   }
 
   renderArticleRows() {
-    const { visibleArticles } = this.props;
-    return visibleArticles.map(article => {
+    const { visibleArticles, sortedArticles } = this.props;
+    let articles = sortedArticles.length > 0 ? sortedArticles : visibleArticles;
+
+    return articles.map(article => {
       return (
         <ArticleRow
           key={article.id}
@@ -56,8 +58,8 @@ class Table extends Component {
             <tr>
               <th>Unpublished Articles</th>
               <th>Author</th>
-              <th>Words</th>
-              <th>Submitted</th>
+              <th onClick={this.props.sortArticles.bind(null, SORT_BY_WORDS)}>Words</th>
+              <th onClick={this.props.sortArticles.bind(null, SORT_BY_SUBMITTED)}>Submitted</th>
             </tr>
           </thead>
 
@@ -75,4 +77,4 @@ function mapStateToProps(state) {
   return { ...state.data }
 }
 
-export default connect(mapStateToProps, { getArticles, loadMoreArticles, getMoreArticles })(Table)
+export default connect(mapStateToProps, { getArticles, loadMoreArticles, getMoreArticles, sortArticles })(Table)
